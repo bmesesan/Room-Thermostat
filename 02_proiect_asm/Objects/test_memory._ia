@@ -1,0 +1,1 @@
+"test_memory.a51" SET (SMALL) DEBUG PRINT(.\Listings\test_memory.lst) OBJECT(.\Objects\test_memory.obj) EP

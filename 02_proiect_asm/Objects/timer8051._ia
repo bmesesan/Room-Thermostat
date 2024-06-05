@@ -1,0 +1,1 @@
+"timer8051.a51" SET (SMALL) DEBUG PRINT(.\Listings\timer8051.lst) OBJECT(.\Objects\timer8051.obj) EP

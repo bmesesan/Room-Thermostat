@@ -1,0 +1,1 @@
+"ADCread.a51" SET (SMALL) DEBUG PRINT(.\Listings\ADCread.lst) OBJECT(.\Objects\ADCread.obj) EP

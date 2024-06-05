@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  ERR_DISPLAY                                                          05/26/2019 23:36:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Err_Display.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Err_Display.a51 SET(SMALL) DEBUG PRINT(.\Listings\Err_Display.lst) OBJE
+                      CT(.\Objects\Err_Display.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;Name RutinaErr_Display;
+                       2     ;Public Err_Display;
+                       3     
+                       4     
+                       5     
+                       6     ;Err_DisplaySeg Segment code
+                       7     ;RSEG Err_DisplaySeg;
+                       8     ;Extrn Code (sendInstr);
+                       9     
+                      10     ;Err_Display:
+                      11     ;setb P2.5;
+                      12     ;cpl P2.5;setez RS pe 0
+                      13     
+                      14     ;mov P3, #10001101b;setez pozitia corecta
+                      15     ;acall sendInstr;
+                      16     
+                      17     ;setb P2.5;
+                      18     ;mov P3, #01100101b;trimit e
+                      19     ;acall sendInstr;
+                      20     
+                      21     ;mov P3, #01110010b;trimit r
+                      22     ;acall sendInstr;
+                      23     
+                      24     ;ret;
+                      25     end;
+A51 MACRO ASSEMBLER  ERR_DISPLAY                                                          05/26/2019 23:36:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

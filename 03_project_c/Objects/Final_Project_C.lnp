@@ -1,0 +1,8 @@
+".\Objects\ADC_Read.obj",
+".\Objects\Delay_ms.obj",
+".\Objects\Display_number.obj",
+".\Objects\Init_Lcd.obj",
+".\Objects\Main.obj",
+".\Objects\Test_Relay.obj" 
+TO ".\Objects\Final_Project_C" 
+PRINT(".\Listings\Final_Project_C.m51")

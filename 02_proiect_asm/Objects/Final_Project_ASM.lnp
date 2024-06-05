@@ -1,0 +1,16 @@
+".\Objects\delay_1ms.obj",
+".\Objects\ADCread.obj",
+".\Objects\DPTRfilter.obj",
+".\Objects\InitLCD.obj",
+".\Objects\main.obj",
+".\Objects\NrDisplay.obj",
+".\Objects\Sendinstr.obj",
+".\Objects\TempStringDisp.obj",
+".\Objects\Err_Display.obj",
+".\Objects\Display_up_nr.obj",
+".\Objects\DPTRfilter_ref.obj",
+".\Objects\Display_down_nr.obj",
+".\Objects\Test_compare.obj",
+".\Objects\delay_10ms.obj" 
+TO ".\Objects\Final_Project_ASM" 
+PRINT(".\Listings\Final_Project_ASM.m51")

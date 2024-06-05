@@ -1,0 +1,95 @@
+A51 MACRO ASSEMBLER  DPTRFILTER_REF                                                       05/27/2019 23:10:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\DPTRfilter_ref.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE DPTRfilter_ref.a51 SET(SMALL) DEBUG PRINT(.\Listings\DPTRfilter_ref.lst) O
+                      BJECT(.\Objects\DPTRfilter_ref.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaDPTRFilter_ref;
+                       2     Public DPTRFilter_ref;
+                       3             
+                       4     DPTRFilter_refSeg Segment code
+----                   5     RSEG DPTRFilter_refSeg;
+                       6             
+0000                   7     DPTRFilter_ref:
+                       8             
+0000                   9             start_filter:
+                      10     
+0000 EF               11             mov a, R7;
+0001 900000           12             mov dptr, #0h;
+0004                  13             constrloop:
+                      14             
+0004                  15             test0:
+0004 B40002           16             cjne a, #0, test10;
+0007 8014             17             sjmp H0;
+                      18             
+0009                  19             test10:
+0009 B40A02           20             cjne a, #10, test20;
+000C 8014             21             sjmp H10;
+                      22             
+000E                  23             test20:
+000E B41402           24             cjne a, #20, test30;
+0011 8014             25             sjmp H20;
+                      26             
+0013                  27             test30:
+0013 B41E02           28             cjne a, #30, FormL;
+0016 8014             29             sjmp H30;
+                      30             
+0018                  31             FormL:
+0018 14               32             dec a;
+0019 0582             33             inc dpl;
+001B 80E7             34             sjmp constrloop;
+                      35             
+001D                  36             H0:
+001D 758300           37             mov dph, #0;
+0020 800F             38             sjmp gata;
+                      39             
+0022                  40             H10:
+0022 758301           41             mov dph, #1;
+0025 800A             42             sjmp gata;
+                      43             
+0027                  44             H20:
+0027 758302           45             mov dph, #2;
+002A 8005             46             sjmp gata;
+                      47             
+002C                  48             H30:
+002C 758303           49             mov dph, #3;
+002F 8000             50             sjmp gata;
+                      51             
+0031                  52             gata:
+0031 22               53             ret;
+                      54     end;
+A51 MACRO ASSEMBLER  DPTRFILTER_REF                                                       05/27/2019 23:10:12 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E               T Y P E  V A L U E   ATTRIBUTES
+
+CONSTRLOOP . . . . .  C ADDR   0004H   R   SEG=DPTRFILTER_REFSEG
+DPH. . . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . . .  D ADDR   0082H   A   
+DPTRFILTER_REF . . .  C ADDR   0000H   R   SEG=DPTRFILTER_REFSEG
+DPTRFILTER_REFSEG. .  C SEG    0032H       REL=UNIT
+FORML. . . . . . . .  C ADDR   0018H   R   SEG=DPTRFILTER_REFSEG
+GATA . . . . . . . .  C ADDR   0031H   R   SEG=DPTRFILTER_REFSEG
+H0 . . . . . . . . .  C ADDR   001DH   R   SEG=DPTRFILTER_REFSEG
+H10. . . . . . . . .  C ADDR   0022H   R   SEG=DPTRFILTER_REFSEG
+H20. . . . . . . . .  C ADDR   0027H   R   SEG=DPTRFILTER_REFSEG
+H30. . . . . . . . .  C ADDR   002CH   R   SEG=DPTRFILTER_REFSEG
+RUTINADPTRFILTER_REF  N NUMB   -----       
+START_FILTER . . . .  C ADDR   0000H   R   SEG=DPTRFILTER_REFSEG
+TEST0. . . . . . . .  C ADDR   0004H   R   SEG=DPTRFILTER_REFSEG
+TEST10 . . . . . . .  C ADDR   0009H   R   SEG=DPTRFILTER_REFSEG
+TEST20 . . . . . . .  C ADDR   000EH   R   SEG=DPTRFILTER_REFSEG
+TEST30 . . . . . . .  C ADDR   0013H   R   SEG=DPTRFILTER_REFSEG
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

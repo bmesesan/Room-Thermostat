@@ -1,0 +1,95 @@
+C51 COMPILER V9.59.0.0   INIT_LCD                                                          05/28/2019 11:48:31 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE INIT_LCD
+OBJECT MODULE PLACED IN .\Objects\Init_Lcd.obj
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE Init_Lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Ini
+                    -t_Lcd.lst) TABS(2) OBJECT(.\Objects\Init_Lcd.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          void delay_ms();
+   4          void instr_set();
+   5          void temp_string_display();
+   6          void tref_string_display();
+   7          void send_instr(unsigned int instruct);
+   8          
+   9          sbit RS = P3^4;
+  10          sbit RW = P3^5;
+  11          sbit EN = P3^6;
+  12          
+  13          void Init_Lcd()
+  14          {
+  15   1        RS = 0;
+  16   1        RW = 0;
+  17   1        EN = 0;
+  18   1        
+  19   1        instr_set();
+  20   1        temp_string_display();
+  21   1        tref_string_display();
+  22   1      }
+  23          
+  24          void send_instr(unsigned int instruct)
+  25          {
+  26   1        P2 = instruct;
+  27   1        delay_ms();
+  28   1        EN = 1;
+  29   1        delay_ms();
+  30   1        EN =~ EN;
+  31   1      }
+  32          
+  33          void instr_set()
+  34          {
+  35   1        unsigned int i;
+  36   1        unsigned char instr[4] = {56, 8, 1, 12};
+  37   1        for (i = 0; i < 4; i++)
+  38   1        {
+  39   2          send_instr(instr[i]);
+  40   2        }
+  41   1      }
+  42          
+  43          void temp_string_display()
+  44          {
+  45   1        //instructiunile necesare pe a afisa 'TEMPERATURE:'
+  46   1        unsigned char instr[12] = {84, 69, 77, 80, 69, 82, 65, 84, 85, 82, 69, 58};
+  47   1        unsigned int i;
+  48   1        RS = 1;
+  49   1        for (i = 0; i < 12; i++)
+  50   1        {
+  51   2          send_instr(instr[i]);
+  52   2        }
+  53   1      }
+  54          
+C51 COMPILER V9.59.0.0   INIT_LCD                                                          05/28/2019 11:48:31 PAGE 2   
+
+  55          void tref_string_display()
+  56          {
+  57   1        unsigned char instr[5] = {84, 82, 69, 70, 58};
+  58   1        unsigned int i;
+  59   1        //setez a doua linie a LCD-ului
+  60   1        RS = 0;
+  61   1        send_instr(192);
+  62   1        
+  63   1        RS = 1;
+  64   1        //instructiunile necesare pe a afisa 'TREF:'
+  65   1        for (i = 0; i < 5; i++)
+  66   1        {
+  67   2          send_instr(instr[i]);
+  68   2        }
+  69   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    193    ----
+   CONSTANT SIZE    =     21    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      27
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

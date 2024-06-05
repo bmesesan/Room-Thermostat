@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  SOFTIME                                                              05/26/2019 23:36:57 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Softime.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Softime.a51 SET(SMALL) DEBUG PRINT(.\Listings\Softime.lst) OBJECT(.\Obj
+                      ects\Softime.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaSoft;
+                       2     Public Softime;
+                       3     
+                       4     SoftSeg Segment code
+----                   5     RSEG Softseg;
+                       6     Extrn code (timer8051);
+                       7     
+0000                   8     softime:
+0000 C0E0              9     push acc;2C
+0002 45F0             10     orl a, b;1C
+0004 B40003           11     cjne a, #0h, ok;2C
+0007 D0E0             12     pop acc;2C
+0009 22               13     ret;2C
+                      14     
+000A                  15     ok:
+000A D0E0             16     pop acc;2C
+000C 6000             17     jz bdown;2C
+                      18     
+000E                  19     bdown:
+000E 15F0             20     dec b;1C
+0010 8000             21     sjmp timer;2C
+                      22     
+0012                  23     timer:
+0012 1100     F       24     acall timer8051;
+0014 00               25     nop;1C
+0015 D5E0FA           26     djnz acc, timer;2C
+0018 B5F0F3           27     cjne a, b, bdown;2C
+001B 22               28     ret;2C
+                      29     ;Timer = 1C + Onemil + 2C = R7*6*C + 3C 
+                      30     
+001C 22               31     ret;
+                      32     end;
+A51 MACRO ASSEMBLER  SOFTIME                                                              05/26/2019 23:36:57 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BDOWN. . . . . . .  C ADDR   000EH   R   SEG=SOFTSEG
+OK . . . . . . . .  C ADDR   000AH   R   SEG=SOFTSEG
+RUTINASOFT . . . .  N NUMB   -----       
+SOFTIME. . . . . .  C ADDR   0000H   R   SEG=SOFTSEG
+SOFTSEG. . . . . .  C SEG    001DH       REL=UNIT
+TIMER. . . . . . .  C ADDR   0012H   R   SEG=SOFTSEG
+TIMER8051. . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           05/28/2019 00:16:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\delay_10ms.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE delay_10ms.a51 SET(SMALL) DEBUG PRINT(.\Listings\delay_10ms.lst) OBJECT(.\
+                      Objects\delay_10ms.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaDelay70ms
+                       2     Public delay_70ms
+                       3     
+                       4     delay_70msSeg Segment code
+----                   5     RSEG delay_70msSeg
+0000                   6     delay_70ms:
+0000 758901            7     mov tmod, #00000001b;
+0003 758CFF            8     mov th0, #0FFh;
+0006 758AFF            9     mov tl0, #0FFh;
+0009 D28C             10     setb TR0;
+000B                  11     stau:
+000B 308DFD           12     jnb TF0,stau;
+000E C28D             13     clr TF0;
+0010 C28C             14     clr TR0;
+                      15     
+0012 22               16     ret;
+                      17     end;    
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           05/28/2019 00:16:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_70MS . . . .  C ADDR   0000H   R   SEG=DELAY_70MSSEG
+DELAY_70MSSEG. . .  C SEG    0013H       REL=UNIT
+RUTINADELAY70MS. .  N NUMB   -----       
+STAU . . . . . . .  C ADDR   000BH   R   SEG=DELAY_70MSSEG
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

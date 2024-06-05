@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  SENDINSTR                                                            05/27/2019 21:25:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Sendinstr.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE Sendinstr.a51 SET(SMALL) DEBUG PRINT(.\Listings\Sendinstr.lst) OBJECT(.\Ob
+                      jects\Sendinstr.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaSendInstr;
+                       2     Public sendInstr;
+                       3     SendInstrSeg Segment Code;
+----                   4     RSEG SendInstrSeg;
+                       5     Extrn Code (delay_1ms);
+0000                   6     sendInstr:
+                       7     
+0000 D2B6              8     setb P3.6;
+0002 1100     F        9     acall delay_1ms;
+0004 B2B6             10     cpl P3.6;
+0006 1100     F       11     acall delay_1ms;
+                      12     
+0008 22               13     ret;
+                      14     end;
+A51 MACRO ASSEMBLER  SENDINSTR                                                            05/27/2019 21:25:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_1MS. . . . .  C ADDR   -----       EXT
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RUTINASENDINSTR. .  N NUMB   -----       
+SENDINSTR. . . . .  C ADDR   0000H   R   SEG=SENDINSTRSEG
+SENDINSTRSEG . . .  C SEG    0009H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

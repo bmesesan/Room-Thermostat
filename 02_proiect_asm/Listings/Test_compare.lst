@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  TEST_COMPARE                                                         05/28/2019 00:33:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Test_compare.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE Test_compare.a51 SET(SMALL) DEBUG PRINT(.\Listings\Test_compare.lst) OBJEC
+                      T(.\Objects\Test_compare.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaTest_comparare
+                       2     Public Test_comparare
+                       3     
+                       4     Test_comparareSeg Segment code
+----                   5     RSEG Test_comparareSeg
+                       6             
+0000                   7     Test_comparare:
+0000 EF                8     mov a, R7;Referinta
+                       9     
+0001                  10     loop_cmp_releu:
+0001 DF02             11     djnz R7, dec_Adc
+0003 8008             12     sjmp opreste_releu;
+0005                  13     dec_Adc:
+0005 DEFA             14     djnz R6, loop_cmp_releu;
+0007 8000             15     sjmp porneste_releu;
+                      16     
+0009                  17     porneste_releu:
+0009 D2B0             18     setb P3.0;
+000B 8002             19     sjmp stop_comparare_releu;
+000D                  20     opreste_releu:
+000D C2B0             21     clr P3.0;
+                      22     
+000F                  23     stop_comparare_releu:
+000F FF               24     mov R7, a;
+0010 22               25     ret;
+                      26     end;
+A51 MACRO ASSEMBLER  TEST_COMPARE                                                         05/28/2019 00:33:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E               T Y P E  V A L U E   ATTRIBUTES
+
+DEC_ADC. . . . . . .  C ADDR   0005H   R   SEG=TEST_COMPARARESEG
+LOOP_CMP_RELEU . . .  C ADDR   0001H   R   SEG=TEST_COMPARARESEG
+OPRESTE_RELEU. . . .  C ADDR   000DH   R   SEG=TEST_COMPARARESEG
+P3 . . . . . . . . .  D ADDR   00B0H   A   
+PORNESTE_RELEU . . .  C ADDR   0009H   R   SEG=TEST_COMPARARESEG
+RUTINATEST_COMPARARE  N NUMB   -----       
+STOP_COMPARARE_RELEU  C ADDR   000FH   R   SEG=TEST_COMPARARESEG
+TEST_COMPARARE . . .  C ADDR   0000H   R   SEG=TEST_COMPARARESEG
+TEST_COMPARARESEG. .  C SEG    0011H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

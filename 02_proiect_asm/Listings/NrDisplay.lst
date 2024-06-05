@@ -1,0 +1,74 @@
+A51 MACRO ASSEMBLER  NRDISPLAY                                                            05/28/2019 00:32:36 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\NrDisplay.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE NrDisplay.a51 SET(SMALL) DEBUG PRINT(.\Listings\NrDisplay.lst) OBJECT(.\Ob
+                      jects\NrDisplay.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaNrDisplay;
+                       2     Public NrDisplay;
+                       3     
+----                   4     Cseg at 186h
+0186 30                5             disp0: db 00110000b;48
+0187 31                6             disp1: db 00110001b;49
+0188 32                7             disp2: db 00110010b;50
+0189 33                8             disp3: db 00110011b;51
+018A 34                9             disp4: db 00110100b;52
+018B 35               10             disp5: db 00110101b;53
+018C 36               11             disp6: db 00110110b;54
+018D 37               12             disp7: db 00110111b;55
+018E 38               13             disp8: db 00111000b;56
+018F 39               14             disp9: db 00111001b;57
+                      15     
+                      16     NrDisplaySeg Segment code
+----                  17     RSEG NrDisplaySeg;
+                      18     Extrn Code (sendInstr);
+                      19     Extrn code (DPTRFilter);
+                      20     Extrn code (Display_up_nr);
+                      21     Extrn code (DPTRFilter_ref);
+                      22     Extrn code (Display_down_nr);   
+0000                  23     NrDisplay:
+0000 1100     F       24     acall DPTRFilter;
+0002 1100     F       25     acall Display_up_nr;
+0004 1100     F       26     acall DPTRFilter_ref;
+0006 1100     F       27     acall Display_down_nr;
+                      28     
+0008                  29     gata_display:
+0008 22               30     ret;    
+                      31     end;
+A51 MACRO ASSEMBLER  NRDISPLAY                                                            05/28/2019 00:32:36 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DISP0. . . . . . .  C ADDR   0186H   A   
+DISP1. . . . . . .  C ADDR   0187H   A   
+DISP2. . . . . . .  C ADDR   0188H   A   
+DISP3. . . . . . .  C ADDR   0189H   A   
+DISP4. . . . . . .  C ADDR   018AH   A   
+DISP5. . . . . . .  C ADDR   018BH   A   
+DISP6. . . . . . .  C ADDR   018CH   A   
+DISP7. . . . . . .  C ADDR   018DH   A   
+DISP8. . . . . . .  C ADDR   018EH   A   
+DISP9. . . . . . .  C ADDR   018FH   A   
+DISPLAY_DOWN_NR. .  C ADDR   -----       EXT
+DISPLAY_UP_NR. . .  C ADDR   -----       EXT
+DPTRFILTER . . . .  C ADDR   -----       EXT
+DPTRFILTER_REF . .  C ADDR   -----       EXT
+GATA_DISPLAY . . .  C ADDR   0008H   R   SEG=NRDISPLAYSEG
+NRDISPLAY. . . . .  C ADDR   0000H   R   SEG=NRDISPLAYSEG
+NRDISPLAYSEG . . .  C SEG    0009H       REL=UNIT
+RUTINANRDISPLAY. .  N NUMB   -----       
+SENDINSTR. . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

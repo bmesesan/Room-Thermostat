@@ -1,0 +1,70 @@
+A51 MACRO ASSEMBLER  INITLCD                                                              05/27/2019 21:25:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\InitLCD.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE InitLCD.a51 SET(SMALL) DEBUG PRINT(.\Listings\InitLCD.lst) OBJECT(.\Object
+                      s\InitLCD.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaInitLCD;
+                       2     Public InitLCD;
+                       3             
+  0038                 4     instr1 equ 00111000b;function set
+  0008                 5     instr2 equ 00001000b;display off
+  0001                 6     instr3 equ 00000001b;display on
+  000C                 7     instr4 equ 00001100b;display on/off control
+                       8     
+                       9     LCDSeg Segment code
+----                  10     RSEG LCDSeg;
+                      11     Extrn Code (sendInstr);
+                      12     Extrn Code (TempStringDisp);
+0000                  13     InitLCD:
+                      14     
+0000 C2B4             15     clr P3.4;RS
+0002 C2B5             16     clr P3.5;R/W
+0004 C2B6             17     clr P3.6;ENABLE
+0006 8500A0           18     mov P2, 0h;
+                      19     
+0009 75A038           20     mov P2, #instr1;
+000C 1100     F       21     acall sendInstr;
+                      22     
+000E 75A008           23     mov P2, #instr2;
+0011 1100     F       24     acall sendInstr;
+                      25     
+0013 75A001           26     mov P2, #instr3;
+0016 1100     F       27     acall sendInstr;
+                      28     
+0018 75A00C           29     mov P2, #instr4;
+001B 1100     F       30     acall sendInstr;
+                      31     
+                      32     ;Display string 'Temperature:'
+001D 1100     F       33     acall TempStringDisp;
+001F 22               34     ret;
+                      35     end;
+A51 MACRO ASSEMBLER  INITLCD                                                              05/27/2019 21:25:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+INITLCD. . . . . .  C ADDR   0000H   R   SEG=LCDSEG
+INSTR1 . . . . . .  N NUMB   0038H   A   
+INSTR2 . . . . . .  N NUMB   0008H   A   
+INSTR3 . . . . . .  N NUMB   0001H   A   
+INSTR4 . . . . . .  N NUMB   000CH   A   
+LCDSEG . . . . . .  C SEG    0020H       REL=UNIT
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RUTINAINITLCD. . .  N NUMB   -----       
+SENDINSTR. . . . .  C ADDR   -----       EXT
+TEMPSTRINGDISP . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

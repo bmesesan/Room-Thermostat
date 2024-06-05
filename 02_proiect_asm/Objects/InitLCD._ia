@@ -1,0 +1,1 @@
+"InitLCD.a51" SET (SMALL) DEBUG PRINT(.\Listings\InitLCD.lst) OBJECT(.\Objects\InitLCD.obj) EP

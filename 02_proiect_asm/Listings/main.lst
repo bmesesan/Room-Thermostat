@@ -1,0 +1,73 @@
+A51 MACRO ASSEMBLER  MAIN_PROJECT5                                                        05/28/2019 01:07:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\main.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE main.a51 SET(SMALL) DEBUG PRINT(.\Listings\main.lst) OBJECT(.\Objects\main
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     $title (Main_Project5)
+                       2     
+                       3     MainP segment Code
+                       4                     
+                       5     Extrn code (InitLCD);
+                       6     Extrn code (ADCread);
+                       7     Extrn code (NrDisplay);
+                       8     Extrn code (delay_1ms);
+                       9     ;Extrn code (delay_70ms);
+                      10     Extrn code (Test_comparare);
+0000                  11     org 0000h;
+0000 020000   F       12     ljmp start;bypass interrupt
+                      13     
+0003                  14     org 03h;
+0003 0F               15     inc R7;
+0004 32               16     reti;
+                      17     
+0013                  18     org 13h;
+0013 1F               19     dec R7;
+0014 32               20     reti;
+                      21     
+                      22     
+----                  23     RSEG MainP;
+0030                  24     org 30h;
+0030                  25     start:
+0030 7590FF           26     mov P1, #0FFh;set P1 as input port for the adc
+0033 75A885           27     mov Ie, #10000101b; enable external int 1
+0036 D28A             28     setb tcon.2;activeaza itnreruperea pe falling edge
+0038 D288             29     setb tcon.0;activeaza itnreruperea pe falling edge
+003A 7F19             30     mov R7, #25;
+003C 1100     F       31     acall InitLCD;
+003E                  32     mainloop:
+003E 1100     F       33     acall ADCread;
+0040 1100     F       34     acall NrDisplay;
+0042 1100     F       35     acall Test_comparare;
+0044 80F8             36     sjmp mainloop;
+0046 80FE             37     jmp $;
+                      38     end;
+A51 MACRO ASSEMBLER  MAIN_PROJECT5                                                        05/28/2019 01:07:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADCREAD. . . . . .  C ADDR   -----       EXT
+DELAY_1MS. . . . .  C ADDR   -----       EXT
+IE . . . . . . . .  D ADDR   00A8H   A   
+INITLCD. . . . . .  C ADDR   -----       EXT
+MAINLOOP . . . . .  C ADDR   003EH   R   SEG=MAINP
+MAINP. . . . . . .  C SEG    0048H       REL=UNIT
+NRDISPLAY. . . . .  C ADDR   -----       EXT
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0030H   R   SEG=MAINP
+TCON . . . . . . .  D ADDR   0088H   A   
+TEST_COMPARARE . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

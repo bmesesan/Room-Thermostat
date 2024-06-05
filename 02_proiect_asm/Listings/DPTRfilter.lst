@@ -1,0 +1,97 @@
+A51 MACRO ASSEMBLER  DPTRFILTER                                                           05/27/2019 23:13:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\DPTRfilter.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE DPTRfilter.a51 SET(SMALL) DEBUG PRINT(.\Listings\DPTRfilter.lst) OBJECT(.\
+                      Objects\DPTRfilter.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaDPTRFilter;
+                       2     Public DPTRFilter;
+                       3             
+                       4     DPTRFilterSeg Segment code
+----                   5     RSEG DPTRFilterSeg;
+                       6             
+0000                   7     DPTRFilter:
+0000 BBFF02            8     cjne R3,#0FFh, start_filter;
+0003 8031              9     sjmp gata;
+                      10     
+0005                  11     start_filter:
+                      12     
+0005 EE               13             mov a, R6;
+0006 900000           14             mov dptr, #0h;
+0009                  15             constrloop:
+                      16             
+0009                  17             test0:
+0009 B40002           18             cjne a, #0, test10;
+000C 8014             19             sjmp H0;
+                      20             
+000E                  21             test10:
+000E B40A02           22             cjne a, #10, test20;
+0011 8014             23             sjmp H10;
+                      24             
+0013                  25             test20:
+0013 B41402           26             cjne a, #20, test30;
+0016 8014             27             sjmp H20;
+                      28             
+0018                  29             test30:
+0018 B41E02           30             cjne a, #30, FormL;
+001B 8014             31             sjmp H30;
+                      32             
+001D                  33             FormL:
+001D 14               34             dec a;
+001E 0582             35             inc dpl;
+0020 80E7             36             sjmp constrloop;
+                      37             
+0022                  38             H0:
+0022 758300           39             mov dph, #0;
+0025 800F             40             sjmp gata;
+                      41             
+0027                  42             H10:
+0027 758301           43             mov dph, #1;
+002A 800A             44             sjmp gata;
+                      45             
+002C                  46             H20:
+002C 758302           47             mov dph, #2;
+002F 8005             48             sjmp gata;
+                      49             
+0031                  50             H30:
+0031 758303           51             mov dph, #3;
+0034 8000             52             sjmp gata;
+                      53             
+0036                  54             gata:
+0036 22               55             ret;
+                      56     end;
+A51 MACRO ASSEMBLER  DPTRFILTER                                                           05/27/2019 23:13:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CONSTRLOOP . . . .  C ADDR   0009H   R   SEG=DPTRFILTERSEG
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+DPTRFILTER . . . .  C ADDR   0000H   R   SEG=DPTRFILTERSEG
+DPTRFILTERSEG. . .  C SEG    0037H       REL=UNIT
+FORML. . . . . . .  C ADDR   001DH   R   SEG=DPTRFILTERSEG
+GATA . . . . . . .  C ADDR   0036H   R   SEG=DPTRFILTERSEG
+H0 . . . . . . . .  C ADDR   0022H   R   SEG=DPTRFILTERSEG
+H10. . . . . . . .  C ADDR   0027H   R   SEG=DPTRFILTERSEG
+H20. . . . . . . .  C ADDR   002CH   R   SEG=DPTRFILTERSEG
+H30. . . . . . . .  C ADDR   0031H   R   SEG=DPTRFILTERSEG
+RUTINADPTRFILTER .  N NUMB   -----       
+START_FILTER . . .  C ADDR   0005H   R   SEG=DPTRFILTERSEG
+TEST0. . . . . . .  C ADDR   0009H   R   SEG=DPTRFILTERSEG
+TEST10 . . . . . .  C ADDR   000EH   R   SEG=DPTRFILTERSEG
+TEST20 . . . . . .  C ADDR   0013H   R   SEG=DPTRFILTERSEG
+TEST30 . . . . . .  C ADDR   0018H   R   SEG=DPTRFILTERSEG
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

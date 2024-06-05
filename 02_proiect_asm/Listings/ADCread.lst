@@ -1,0 +1,147 @@
+A51 MACRO ASSEMBLER  ADCREAD                                                              05/27/2019 23:13:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ADCread.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE ADCread.a51 SET(SMALL) DEBUG PRINT(.\Listings\ADCread.lst) OBJECT(.\Object
+                      s\ADCread.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaADCRead;
+                       2     Public ADCread;
+----                   3     Cseg at 150h
+0150 01                4             my0: db 00000001b;1
+0151 06                5             my1: db 00000110b;6
+0152 0B                6             my2: db 00001011b;11
+0153 10                7             my3: db 00010000b;16
+0154 16                8             my4: db 00010110b;!!22  
+0155 1B                9             my5: db 00011011b;27    
+0156 20               10             my6: db 00100000b;32            
+0157 25               11             my7: db 00100101b;37                    
+0158 2A               12             my8: db 00101010b;42                    
+0159 2F               13             my9: db 00101111b;47                    
+015A 34               14             my10: db 00110100b;52                   
+015B 39               15             my11: db 00111001b;57                   
+015C 3E               16             my12: db 00111110b;62   
+015D 44               17         my13: db 01000100b;!!68             
+015E 49               18             my14: db 01001001b;73
+015F 4E               19             my15: db 01001110b;78           
+0160 53               20             my16: db 01010011b;83
+0161 58               21             my17: db 01011000b;88
+0162 5D               22             my18: db 01011101b;93   
+0163 62               23             my19: db 01100010b;98           
+0164 67               24             my20: db 01100111b;103
+0165 6C               25             my21: db 01101100b;108  
+0166 72               26             my22: db 01110010b;!!114        
+0167 77               27             my23: db 01110111b;119  
+0168 7C               28             my24: db 01111100b;124  
+0169 81               29             my25: db 10000001b;129  
+016A 86               30             my26: db 10000110b;134  
+016B 8B               31             my27: db 10001011b;139  
+016C 90               32             my28: db 10010000b;144  
+016D 95               33             my29: db 10010101b;149  
+016E 9A               34             my30: db 10011010b;154  
+016F A0               35             my31: db 10100000b;!!160
+0170 A5               36             my32: db 10100101b;165                  
+0171 AA               37             my33: db 10101010b;170  
+0172 AF               38             my34: db 10101111b;175  
+0173 B3               39             my35: db 10110011b;!!179
+                      40                     
+                      41             
+                      42     ADCreadSeg Segment code
+----                  43     RSEG ADCreadSeg;
+0000                  44     ADCread:
+0000 ABFF             45     mov R3, 0FFh;tot timpul vom crede ca este o eroare initial
+0002 8590F0           46     mov b, P1;punem in B valoarea citita de la P1
+0005 900100           47     mov dptr, #100h;
+0008                  48     loopadc:
+                      49     
+0008 E582             50     mov a, dpl;
+000A B42402           51     cjne a, #36, continuareverif;
+000D 8009             52     sjmp stop_nok;
+                      53     
+000F                  54     continuareverif:
+000F 7450             55     mov a, #50h;
+0011 93               56     movc a, @a+dptr;
+0012 A3               57     inc dptr;
+A51 MACRO ASSEMBLER  ADCREAD                                                              05/27/2019 23:13:17 PAGE     2
+
+                      58     
+0013 B5F0F2           59     cjne a, b, loopadc;     
+0016 8004             60     sjmp stopok;
+                      61     
+0018                  62     stop_nok:
+0018 7BFF             63     mov R3, #0FFh;cod ca nu e ok
+001A 8006             64     sjmp stop;
+                      65     
+001C                  66     stopok:
+001C AB00             67     mov R3, 00h;cod ca e ok
+                      68     
+001E E582             69     mov a, dpl;
+0020 14               70     dec a;
+0021 FE               71     mov R6, a;
+0022                  72     stop:
+0022 22               73     ret;    
+                      74     end;    
+A51 MACRO ASSEMBLER  ADCREAD                                                              05/27/2019 23:13:17 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADCREAD. . . . . .  C ADDR   0000H   R   SEG=ADCREADSEG
+ADCREADSEG . . . .  C SEG    0023H       REL=UNIT
+B. . . . . . . . .  D ADDR   00F0H   A   
+CONTINUAREVERIF. .  C ADDR   000FH   R   SEG=ADCREADSEG
+DPL. . . . . . . .  D ADDR   0082H   A   
+LOOPADC. . . . . .  C ADDR   0008H   R   SEG=ADCREADSEG
+MY0. . . . . . . .  C ADDR   0150H   A   
+MY1. . . . . . . .  C ADDR   0151H   A   
+MY10 . . . . . . .  C ADDR   015AH   A   
+MY11 . . . . . . .  C ADDR   015BH   A   
+MY12 . . . . . . .  C ADDR   015CH   A   
+MY13 . . . . . . .  C ADDR   015DH   A   
+MY14 . . . . . . .  C ADDR   015EH   A   
+MY15 . . . . . . .  C ADDR   015FH   A   
+MY16 . . . . . . .  C ADDR   0160H   A   
+MY17 . . . . . . .  C ADDR   0161H   A   
+MY18 . . . . . . .  C ADDR   0162H   A   
+MY19 . . . . . . .  C ADDR   0163H   A   
+MY2. . . . . . . .  C ADDR   0152H   A   
+MY20 . . . . . . .  C ADDR   0164H   A   
+MY21 . . . . . . .  C ADDR   0165H   A   
+MY22 . . . . . . .  C ADDR   0166H   A   
+MY23 . . . . . . .  C ADDR   0167H   A   
+MY24 . . . . . . .  C ADDR   0168H   A   
+MY25 . . . . . . .  C ADDR   0169H   A   
+MY26 . . . . . . .  C ADDR   016AH   A   
+MY27 . . . . . . .  C ADDR   016BH   A   
+MY28 . . . . . . .  C ADDR   016CH   A   
+MY29 . . . . . . .  C ADDR   016DH   A   
+MY3. . . . . . . .  C ADDR   0153H   A   
+MY30 . . . . . . .  C ADDR   016EH   A   
+MY31 . . . . . . .  C ADDR   016FH   A   
+MY32 . . . . . . .  C ADDR   0170H   A   
+MY33 . . . . . . .  C ADDR   0171H   A   
+MY34 . . . . . . .  C ADDR   0172H   A   
+MY35 . . . . . . .  C ADDR   0173H   A   
+MY4. . . . . . . .  C ADDR   0154H   A   
+MY5. . . . . . . .  C ADDR   0155H   A   
+MY6. . . . . . . .  C ADDR   0156H   A   
+MY7. . . . . . . .  C ADDR   0157H   A   
+MY8. . . . . . . .  C ADDR   0158H   A   
+MY9. . . . . . . .  C ADDR   0159H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+RUTINAADCREAD. . .  N NUMB   -----       
+STOP . . . . . . .  C ADDR   0022H   R   SEG=ADCREADSEG
+STOPOK . . . . . .  C ADDR   001CH   R   SEG=ADCREADSEG
+STOP_NOK . . . . .  C ADDR   0018H   R   SEG=ADCREADSEG
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

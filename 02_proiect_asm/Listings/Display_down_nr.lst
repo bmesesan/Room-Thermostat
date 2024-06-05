@@ -1,0 +1,77 @@
+A51 MACRO ASSEMBLER  DISPLAY_DOWN_NR                                                      05/27/2019 23:10:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Display_down_nr.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE Display_down_nr.a51 SET(SMALL) DEBUG PRINT(.\Listings\Display_down_nr.lst)
+                       OBJECT(.\Objects\Display_down_nr.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaDisplay_down_nr;
+                       2     Public Display_down_nr;
+                       3     
+  00DF                 4     instrgrd equ 11011111b;
+                       5     
+                       6     Display_down_nrSeg Segment code
+----                   7     RSEG Display_down_nrSeg;
+                       8             
+                       9     Extrn Code (sendInstr);
+                      10             
+0000                  11     Display_down_nr:
+0000 C2B4             12     clr P3.4;setez RS pe 0
+                      13     
+0002 75A0CC           14     mov P2, #11001100b;setez pozitia corecta 
+0005 1100     F       15     acall sendInstr;
+                      16     
+0007 E583             17     mov a, dph;
+0009 8582F0           18     mov b, dpl;
+000C D2B4             19     setb P3.4;Rs = 1
+                      20     
+000E                  21     regular_display:
+000E E583             22     mov a, dph;
+0010 8582F0           23     mov b, dpl;
+                      24     
+0013 D2B4             25     setb P3.4;
+                      26     
+0015 900186           27     mov dptr, #186h;trimitem MSB
+0018 93               28     movc a, @a+dptr;
+0019 F5A0             29     mov P2, a;
+001B 1100     F       30     acall sendInstr;
+                      31     
+001D E5F0             32     mov a, b;
+001F 93               33     movc a, @a+dptr;
+0020 F5A0             34     mov P2, a;
+0022 1100     F       35     acall sendInstr;
+                      36     
+                      37     ;punem bulina de grade
+0024 75A0DF           38     mov P2, #instrgrd;
+0027 1100     F       39     acall sendInstr;
+                      40     
+0029 22               41     ret;
+                      42     end;
+A51 MACRO ASSEMBLER  DISPLAY_DOWN_NR                                                      05/27/2019 23:10:12 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                T Y P E  V A L U E   ATTRIBUTES
+
+B . . . . . . . . . .  D ADDR   00F0H   A   
+DISPLAY_DOWN_NR . . .  C ADDR   0000H   R   SEG=DISPLAY_DOWN_NRSEG
+DISPLAY_DOWN_NRSEG. .  C SEG    002AH       REL=UNIT
+DPH . . . . . . . . .  D ADDR   0083H   A   
+DPL . . . . . . . . .  D ADDR   0082H   A   
+INSTRGRD. . . . . . .  N NUMB   00DFH   A   
+P2. . . . . . . . . .  D ADDR   00A0H   A   
+P3. . . . . . . . . .  D ADDR   00B0H   A   
+REGULAR_DISPLAY . . .  C ADDR   000EH   R   SEG=DISPLAY_DOWN_NRSEG
+RUTINADISPLAY_DOWN_NR  N NUMB   -----       
+SENDINSTR . . . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

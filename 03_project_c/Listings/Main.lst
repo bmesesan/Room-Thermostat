@@ -1,0 +1,65 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              05/28/2019 11:57:54 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\Main.obj
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE Main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Main.ls
+                    -t) TABS(2) OBJECT(.\Objects\Main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          
+   4          
+   5          void delay_ms();
+   6          void Init_Lcd();
+   7          unsigned int ADC_Read();
+   8          void display_number(unsigned int Adc, unsigned int ref);
+   9          void Test_relay(unsigned int adc, unsigned int ref);
+  10          void ISR_ex0(void);
+  11          void ISR_ex1(void);
+  12          unsigned int ref = 25;
+  13          
+  14          void main(void)
+  15          {
+  16   1        unsigned int adc;
+  17   1        IE = 0x85;
+  18   1        IT0=1;
+  19   1        IT1=1;
+  20   1        Init_Lcd();
+  21   1        while(1)
+  22   1        {
+  23   2          delay_ms();
+  24   2          adc = ADC_Read();
+  25   2          delay_ms();
+  26   2          display_number(adc, ref);
+  27   2          delay_ms();
+  28   2          Test_relay(adc, ref);
+  29   2        }
+  30   1      }
+  31          
+  32          void ISR_ex0(void)  interrupt 0
+  33          {
+  34   1        ref++;
+  35   1      }
+  36          
+  37          void ISR_ex1(void)  interrupt 2
+  38          {
+  39   1        ref--;
+  40   1      }
+  41          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     76    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

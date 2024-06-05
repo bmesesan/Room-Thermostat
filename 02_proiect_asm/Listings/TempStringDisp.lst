@@ -1,0 +1,123 @@
+A51 MACRO ASSEMBLER  TEMPSTRINGDISP                                                       05/27/2019 21:42:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\TempStringDisp.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE TempStringDisp.a51 SET(SMALL) DEBUG PRINT(.\Listings\TempStringDisp.lst) O
+                      BJECT(.\Objects\TempStringDisp.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaTempStringDisp;
+                       2     Public TempStringDisp;
+                       3             
+  0054                 4     instrT equ 01010100b;
+  0045                 5     instrE equ 01000101b;
+  004D                 6     instrM equ 01001101b;
+  0050                 7     instrP equ 01010000b;
+  0052                 8     instrR equ 01010010b;
+  0041                 9     instrA equ 01000001b;
+  0055                10     instrU equ 01010101b;
+  003A                11     instr2P equ 00111010b;
+  0046                12     instrF equ 01000110b;
+                      13     
+                      14     TempStringDispSeg Segment code
+----                  15     RSEG TempStringDispSeg;
+                      16     Extrn Code (sendInstr);
+                      17             
+0000                  18     TempStringDisp:
+                      19     
+                      20     ;RS = 1, deoarece trimitem caractere pentru display
+0000 D2B4             21     setb P3.4;
+0002 75A054           22     mov P2, #instrT;
+0005 1100     F       23     acall sendInstr;
+                      24     
+0007 75A045           25     mov P2, #instrE;
+000A 1100     F       26     acall sendInstr;
+                      27     
+000C 75A04D           28     mov P2, #instrM;
+000F 1100     F       29     acall sendInstr;
+                      30     
+0011 75A050           31     mov P2, #instrP;
+0014 1100     F       32     acall sendInstr;
+                      33     
+0016 75A045           34     mov P2, #instrE;
+0019 1100     F       35     acall sendInstr;
+                      36     
+001B 75A052           37     mov P2, #instrR;
+001E 1100     F       38     acall sendInstr;
+                      39     
+0020 75A041           40     mov P2, #instrA;
+0023 1100     F       41     acall sendInstr;
+                      42     
+0025 75A054           43     mov P2, #instrT;
+0028 1100     F       44     acall sendInstr;
+                      45     
+002A 75A055           46     mov P2, #instrU;
+002D 1100     F       47     acall sendInstr;
+                      48     
+002F 75A052           49     mov P2, #instrR;
+0032 1100     F       50     acall sendInstr;
+                      51     
+0034 75A045           52     mov P2, #instrE;
+0037 1100     F       53     acall sendInstr;
+                      54     
+0039 75A03A           55     mov P2, #instr2P;
+003C 1100     F       56     acall sendInstr;
+                      57     
+A51 MACRO ASSEMBLER  TEMPSTRINGDISP                                                       05/27/2019 21:42:46 PAGE     2
+
+                      58     ;Rs = 0 deoarece urmeaza sa setam pozitia
+003E C2B4             59     clr P3.4;
+                      60     
+0040 75A0C0           61     mov P2, #11000000b;setez pozitia corecta
+0043 1100     F       62     acall sendInstr;
+                      63     
+0045 D2B4             64     setb P3.4;
+                      65     
+0047 75A054           66     mov P2, #instrT;
+004A 1100     F       67     acall sendInstr;
+                      68     
+004C 75A052           69     mov P2, #instrR;
+004F 1100     F       70     acall sendInstr;
+                      71     
+0051 75A045           72     mov P2, #instrE;
+0054 1100     F       73     acall sendInstr;
+                      74     
+0056 75A046           75     mov P2, #instrF;
+0059 1100     F       76     acall sendInstr;
+                      77     
+005B 75A03A           78     mov P2, #instr2P;
+005E 1100     F       79     acall sendInstr;
+                      80     
+0060 22               81     ret;
+                      82     end;    
+A51 MACRO ASSEMBLER  TEMPSTRINGDISP                                                       05/27/2019 21:42:46 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E               T Y P E  V A L U E   ATTRIBUTES
+
+INSTR2P. . . . . . .  N NUMB   003AH   A   
+INSTRA . . . . . . .  N NUMB   0041H   A   
+INSTRE . . . . . . .  N NUMB   0045H   A   
+INSTRF . . . . . . .  N NUMB   0046H   A   
+INSTRM . . . . . . .  N NUMB   004DH   A   
+INSTRP . . . . . . .  N NUMB   0050H   A   
+INSTRR . . . . . . .  N NUMB   0052H   A   
+INSTRT . . . . . . .  N NUMB   0054H   A   
+INSTRU . . . . . . .  N NUMB   0055H   A   
+P2 . . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . . .  D ADDR   00B0H   A   
+RUTINATEMPSTRINGDISP  N NUMB   -----       
+SENDINSTR. . . . . .  C ADDR   -----       EXT
+TEMPSTRINGDISP . . .  C ADDR   0000H   R   SEG=TEMPSTRINGDISPSEG
+TEMPSTRINGDISPSEG. .  C SEG    0061H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

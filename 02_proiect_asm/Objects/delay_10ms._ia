@@ -1,0 +1,1 @@
+"delay_10ms.a51" SET (SMALL) DEBUG PRINT(.\Listings\delay_10ms.lst) OBJECT(.\Objects\delay_10ms.obj) EP

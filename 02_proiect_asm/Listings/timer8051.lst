@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  TIMER8051                                                            05/26/2019 23:36:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\timer8051.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE timer8051.a51 SET(SMALL) DEBUG PRINT(.\Listings\timer8051.lst) OBJECT(.
+                      \Objects\timer8051.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     Name RutinaTimer8051
+                       2     Public timer8051
+  0099                 3     del equ 99h;
+                       4     TimerSeg Segment code
+----                   5     RSEG TimerSeg
+                       6     
+0000                   7     timer8051:      ;Timer =  3xCM+6CM
+0000 7F99              8             mov r7, #del;1C
+0002                   9             onemil:
+0002 00               10                     nop;  1CM TONE = 1
+0003 00               11                     nop;
+0004 00               12                     nop;
+0005 00               13                     nop;    TONE = 4
+0006 DFFA             14             djnz r7, onemil;Onemil = R7x6xCM
+0008 22               15             ret;2C
+                      16             ;Total 3C + Onemil
+                      17     end;
+A51 MACRO ASSEMBLER  TIMER8051                                                            05/26/2019 23:36:58 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DEL. . . . . . . .  N NUMB   0099H   A   
+ONEMIL . . . . . .  C ADDR   0002H   R   SEG=TIMERSEG
+RUTINATIMER8051. .  N NUMB   -----       
+TIMER8051. . . . .  C ADDR   0000H   R   SEG=TIMERSEG
+TIMERSEG . . . . .  C SEG    0009H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
